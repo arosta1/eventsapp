@@ -1,9 +1,13 @@
 class ConcertsController < ApplicationController
+
+  before_filter :security, only: [:new, :create, :edit, :destroy]
+
   # GET /concerts
   # GET /concerts.json
   def index
     @concerts = Concert.all
-
+    @user = @current_user
+	
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @concerts }
@@ -80,4 +84,14 @@ class ConcertsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def search
+      @concerts = Concert.search params[:q]
+	  unless @concerts.empty?
+	    render 'index'
+	  else
+        flash[:notice] = 'No Events To Match That Search'
+		render 'index'
+	  end
+   end	
 end

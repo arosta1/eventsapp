@@ -7,5 +7,18 @@
   <h1>Ticket Central</h1>
 </head>
 <body>
+
+<table align="center" width="20">
+     <% @concerts.each do |concert| %>
+         <td>
+		     <div>
+                  <%= link_to(image_tag(concert.image, :size => "150x150"), concert) %>             
+                  <p><%= link_to(concert.act_name, concert) %></p>
+				  <%= link_to('Book Tickets', new_booking_path, :class => "button", :id => "book") %>
+		     <div>	 
+		</td>   
+     <% end %>	
+</table>
+ 
 </body>
 </html>

@@ -9,6 +9,10 @@ gem 'sqlite3'
 
 gem 'coffee-script-source', '1.8.0'
 
+gem 'geocoder' 
+
+gem 'carrierwave'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

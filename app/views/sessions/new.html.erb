@@ -1,5 +1,5 @@
-<h1>Sign In</h1>
 <%= form_tag sessions_path do %>
+<p id="notice"><%= notice %></p>
    <table>
    <tr>
        <td><%= label_tag :name %></td>
@@ -10,7 +10,9 @@
 	   <td><%= password_field_tag :password %></td>
    </tr>
    <tr>
-       <td><%= submit_tag "Sign In" %></td>
+       <td><%= submit_tag("Sign In", :class => "button" ) %></td>
+
+
    </tr>
    </table>
 <% end %>   

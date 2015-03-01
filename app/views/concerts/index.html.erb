@@ -1,39 +1,34 @@
-<h1>Listing concerts</h1>
+<h1>Search Results</h1>
 
-<table>
+<head>
+<title>Eventsapp</title>
+  <%= stylesheet_link_tag    "searchresults", :media => "all" %>
+</head>
+
+<table id="searchtable" align="center">
   <tr>
-    <th>Act name</th>
+    <th>Image</th>
+	<th>Act Name</th>
     <th>Location</th>
     <th>Start date</th>
     <th>Start time</th>
     <th>End time</th>
     <th>Capacity</th>
-    <th>Image</th>
-    <th>Longitude</th>
-    <th>Latitude</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @concerts.each do |concert| %>
   <tr>
+    <td> <%= link_to(image_tag(concert.image, :size => "50x50"), concert) %></td>
     <td><%= concert.act_name %></td>
     <td><%= concert.location %></td>
     <td><%= concert.start_date %></td>
     <td><%= concert.start_time %></td>
     <td><%= concert.end_time %></td>
     <td><%= concert.capacity %></td>
-    <td><%= concert.image %></td>
-    <td><%= concert.longitude %></td>
-    <td><%= concert.latitude %></td>
-    <td><%= link_to 'Show', concert %></td>
-    <td><%= link_to 'Edit', edit_concert_path(concert) %></td>
-    <td><%= link_to 'Destroy', concert, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to('Details', concert, :class => "button") %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<br/>
 
-<%= link_to 'New Concert', new_concert_path %>

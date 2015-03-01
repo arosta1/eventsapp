@@ -1,4 +1,7 @@
 class BookingsController < ApplicationController
+
+  before_filter :authorise
+
   # GET /bookings
   # GET /bookings.json
   def index
@@ -25,7 +28,7 @@ class BookingsController < ApplicationController
   # GET /bookings/new.json
   def new
     @booking = Booking.new
-
+ 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @booking }

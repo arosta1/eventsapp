@@ -20,7 +20,8 @@ Eventsapp::Application.routes.draw do
   resources :sessions
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-
+  match '/search', :to => 'concerts#search'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

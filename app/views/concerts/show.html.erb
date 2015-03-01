@@ -1,50 +1,62 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Act name:</b>
-  <%= @concert.act_name %>
-</p>
+<head>
+<title>Eventsapp</title>
+  <%= stylesheet_link_tag    "concertshow", :media => "all" %>
+</head>
 
-<p>
-  <b>Location:</b>
-  <%= @concert.location %>
-</p>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("#map").slideToggle();
+    });
+});
+</script>
+	
+<div id="con>"
+<table class="con">
+     <tr>
+        <td>
+	      <p><b><%= @concert.act_name %></b></p>
+          <p>
+          <%= image_tag(@concert.image, :size => "250x250") %>
+          </p>
+       </td>
+	 </tr>
+	 <td>
+	      <p>
+              <b>Location:</b>
+              <%= @concert.location %>
+          </p>
 
-<p>
-  <b>Start date:</b>
-  <%= @concert.start_date %>
-</p>
+          <p>
+             <b>Start date:</b>
+             <%= @concert.start_date %>
+          </p>
 
-<p>
-  <b>Start time:</b>
-  <%= @concert.start_time %>
-</p>
+          <p>
+             <b>Start time:</b>
+             <%= @concert.start_time %>
+          </p>
 
-<p>
-  <b>End time:</b>
-  <%= @concert.end_time %>
-</p>
+          <p>
+             <b>End time:</b>
+             <%= @concert.end_time %>
+          </p>	    
+	 </td>
+</table>
+</div>
 
-<p>
-  <b>Capacity:</b>
-  <%= @concert.capacity %>
-</p>
+<div>
+     <%= link_to('Book Tickets', new_booking_path, :class => "button") %>
+	 <input id="hide" type="submit" value="Map" class="button" align="center">
+</div>
 
-<p>
-  <b>Image:</b>
-  <%= @concert.image %>
-</p>
-
-<p>
-  <b>Longitude:</b>
-  <%= @concert.longitude %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%= @concert.latitude %>
-</p>
+<div id="map"><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@concert.latitude}%2C#{@concert.longitude}" %></div>
 
 
-<%= link_to 'Edit', edit_concert_path(@concert) %> |
-<%= link_to 'Back', concerts_path %>
+
+
+

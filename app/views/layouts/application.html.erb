@@ -15,23 +15,26 @@
 		  <td>
 		      <% if !signed_in?%>
 			      <%= link_to "Sign In", signin_path %>
+				  <%= link_to "Register", new_user_path %>
 			  <% else %>
 			    <p>Welcome, </p><%= @current_user.name %>
-				<%= link_to "Sign Out", signout_path %>
+				<td><%= link_to "Sign Out", signout_path %></td>
+				<td><%= link_to "My Bookings", new_booking_path %></td>
               <% end %>      			  
 		  </td>
-		  <td> <%= link_to "Register", new_user_path %></td>
 		  <td><%= link_to "Concerts", concerts_path%><td>
-		  <td><form id="search" method="get" action="http://www.google.com"></td> <!-- --> 
-		  <td><input type="text" class="textinput" name="q" size="21" maxlength="120" placeholder="Search Events"><input type="submit" value="Search" class="button">
-		      </form>
-              <div class="clear"></div></td>
+		  <td>
+		      <div id="search">
+		      <%= render :partial => 'concerts/search' %> 
+		      </div>
+		  </td>
 	    </tr>
     </table>
 </div>
 <%@page_title || "EvenTech" %>
 
 <%= yield %>
+
 
 </body>
 </html>
